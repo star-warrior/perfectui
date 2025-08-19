@@ -1,1 +1,5 @@
 # perfectui
+
+### Prompt:
+
+Create a JSON profile design system that extracts visual data from these screenshots so that i can use the JSON output in Cursor to give it context on how to replicate such design systems in a consistent style. Avoid including the contents of the specific images. The output should include the design style, the structure and anything that'll help an Al replicate such designs
