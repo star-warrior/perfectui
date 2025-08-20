@@ -1,10 +1,10 @@
-# perfectui
+# perfecto ui
 
 ## About
 
 Vibe Coding Your frontend but your AI gives you the same lame design again and again,
 
-#### No more.....
+### No more
 
 ### Introduncing Prefecto UI ✨🌟
 

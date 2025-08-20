@@ -1,0 +1,98 @@
+{
+  "themeName": "Dark Mode Professional",
+  "style": {
+    "colorPalette": {
+      "primary": "#1c9cf0",
+      "primaryForeground": "#ffffff",
+      "secondary": "#f0f3f4",
+      "secondaryForeground": "#011419",
+      "background": "#0c0d0f",
+      "surface": "#131416",
+      "border": "#2c2e30",
+      "text": "#e0e0e0"
+    },
+    "typography": {
+      "fontFamily": "Inter, system-ui, sans-serif",
+      "headings": {
+        "size": "2rem",
+        "weight": "600",
+        "color": "text"
+      },
+      "subheadings": {
+        "size": "1rem",
+        "weight": "400",
+        "color": "text"
+      },
+      "body": {
+        "size": "0.875rem",
+        "weight": "400",
+        "color": "text"
+      },
+      "labels": {
+        "size": "0.75rem",
+        "weight": "500",
+        "color": "primaryForeground"
+      }
+    },
+    "layout": {
+      "spacing": "1rem",
+      "padding": "1rem",
+      "borderRadius": "0.5rem",
+      "shadow": "0px 2px 4px rgba(0, 0, 0, 0.2)"
+    },
+    "visualElements": {
+      "charts": {
+        "lineColor": "primary",
+        "gridColor": "border",
+        "fillOpacity": "0.2"
+      },
+      "buttons": {
+        "backgroundColor": "surface",
+        "hoverColor": "#212325",
+        "textColor": "text",
+        "borderColor": "border",
+        "active": {
+          "backgroundColor": "primary",
+          "textColor": "primaryForeground"
+        }
+      },
+      "cards": {
+        "backgroundColor": "surface",
+        "borderColor": "border"
+      }
+    }
+  },
+  "structure": {
+    "header": {
+      "elements": ["logo", "navigation", "search", "user-profile"],
+      "layout": "horizontal-flexbox-align-center",
+      "spacing": "1.5rem"
+    },
+    "sidebar": {
+      "elements": ["navigation-menu", "color-picker", "tabs"],
+      "layout": "vertical",
+      "width": "20rem"
+    },
+    "mainContent": {
+      "elements": ["dashboard-cards", "charts", "calendar", "lists"],
+      "layout": "grid-responsive",
+      "gap": "1rem"
+    },
+    "components": {
+      "card": {
+        "padding": "1.25rem",
+        "borderRadius": "0.75rem",
+        "boxShadow": "none",
+        "border": "1px solid"
+      },
+      "button": {
+        "padding": "0.5rem 1rem",
+        "borderRadius": "0.25rem"
+      },
+      "tab": {
+        "padding": "0.5rem 1rem",
+        "activeIndicator": "bottom-border"
+      }
+    }
+  }
+}
