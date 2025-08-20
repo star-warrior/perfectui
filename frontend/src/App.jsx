@@ -1,18 +1,19 @@
-import { useState } from "react";
 import "./App.css";
 
-import ImageUpload from "./components/ImageUpload";
-import RallyPlayUI from "./pages/SportsApp";
+// import PerfecttoUI from "./pages/PerfecttoUI";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import Homepage from "./pages/HomePage";
+import TemplatePage from "./pages/TemplatePage";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl text-red-400 font-bold leading-relaxed text-center">
-        PerfectUI{" "}
-      </h1>
-      <ImageUpload />
-      <RallyPlayUI />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/templates" element={<TemplatePage />} />
+      </Routes>
+    </Router>
   );
 }
 

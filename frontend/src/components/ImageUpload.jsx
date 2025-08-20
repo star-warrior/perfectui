@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 
 function ImageUpload() {
   const [files, setFiles] = useState([]);
+  const fileInputRef = useRef(null);
 
   function handleFileChange(event) {
     setFiles((prev) => [...prev, ...Array.from(event.target.files)]);
@@ -96,9 +97,13 @@ function ImageUpload() {
   return (
     <>
       {" "}
-      <div className="flex flex-col items-center justify-center p-4">
+      <div
+        onClick={() => fileInputRef.current?.click()}
+        className="flex border-2 border-gray-300 rounded-lg w-[40%] text-white bg-amber-900 flex-col items-center justify-center p-4"
+      >
         <label htmlFor="fileInput">Upload Files Here </label>
         <input
+          ref={fileInputRef}
           id="fileInput"
           type="file"
           accept="image/*"
