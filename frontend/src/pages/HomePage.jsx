@@ -24,7 +24,7 @@ export default function Homepage() {
             Way
           </h1>
 
-          <p className="text-[var(--muted-text)] text-[length:var(--text-xl)] font-semibold mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[var(--muted-text)] text-[length:var(--text-xl)] font-normal mb-8 max-w-2xl mx-auto leading-relaxed">
             Generate custom JSON profile for your AI Code Editor
             <br />
             to get consistent UI across board. Customize Colors, libraries and
@@ -45,14 +45,14 @@ export default function Homepage() {
               <Check className="text-[var(--primary-color)]" />
               <span className="text-[var(--muted-text)] text-[length:var(--text-sm)] font-medium">
                 {" "}
-                Works with any tool
+                Easy to use
               </span>
             </div>
             <div className="flex items-center space-x-2">
               <Check className="text-[var(--primary-color)]" />
               <span className="text-[var(--muted-text)] text-[length:var(--text-sm)] font-medium">
                 {" "}
-                Works with any tool
+                Easily customizable
               </span>
             </div>
           </div>

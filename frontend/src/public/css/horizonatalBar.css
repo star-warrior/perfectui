@@ -1,0 +1,13 @@
+/* Horizontal scrollbar styles */
+::-webkit-scrollbar {
+  height: 6px; /* instead of width */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

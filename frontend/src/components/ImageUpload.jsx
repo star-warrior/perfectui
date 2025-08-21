@@ -101,40 +101,16 @@ function ImageUpload() {
         onClick={() => fileInputRef.current?.click()}
         className="flex border-2 border-gray-300 rounded-lg w-[40%] text-white bg-amber-900 flex-col items-center justify-center p-4"
       >
-        <label htmlFor="fileInput">Upload Files Here </label>
         <input
           ref={fileInputRef}
           id="fileInput"
           type="file"
           accept="image/*"
           className="border border-gray-300 rounded p-2 mb-4 hidden"
-          multiple
-          onChange={handleFileChange}
           placeholder={`${files.length} files selected`}
         />
       </div>
-      <div className="preview flex flex-wrap gap-4">
-        {files.map((file, index) => (
-          <div
-            key={index}
-            className="flex flex-col p-4 bg-gray-300 rounded-sm relative"
-          >
-            <button
-              className="absolute top-2 right-2 bg-white text-black rounded-[50%] p-1"
-              onClick={() => {
-                setFiles(files.filter((_, i) => i !== index));
-              }}
-            >
-              X
-            </button>
-            <img
-              className="w-50"
-              src={URL.createObjectURL(file)}
-              alt={file.name}
-            />
-          </div>
-        ))}
-      </div>
+      <div className="preview flex flex-wrap gap-4"></div>
       {files.length > 0 && (
         <button
           onClick={(e) => handleSubmit(e)}

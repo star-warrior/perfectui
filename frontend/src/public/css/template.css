@@ -1,0 +1,23 @@
+pre {
+  background: transparent !important;
+  font-size: var(--text-sm);
+}
+
+/* For vertical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* For horizontal scrollbar */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

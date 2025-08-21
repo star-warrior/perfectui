@@ -1,16 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Github, Check } from "lucide-react";
+import { useUser } from "../context/UserContext";
 
 export default function NavbarHome() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, setUser } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Check for user in URL (after Google OAuth)
+    const params = new URLSearchParams(window.location.search);
+    const userParam = params.get("user");
+    if (userParam) {
+      try {
+        setUser(JSON.parse(decodeURIComponent(userParam)));
+        // Optionally remove user param from URL
+        window.history.replaceState(null, "", window.location.pathname);
+      } catch {
+        console.error("Failed to parse user data from URL", userParam);
+        setUser(null);
+      }
+    }
   }, []);
 
   return (
@@ -40,9 +57,29 @@ export default function NavbarHome() {
           <Github size={16} />
           <span>6.6K</span>
         </div>
-        <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">
-          Sign Up →
-        </button>
+        {user ? (
+          <div className="flex items-center space-x-2">
+            <img
+              src={user.photos?.[0]?.value}
+              alt="Profile"
+              className="w-8 h-8 rounded-full border-2 border-blue-500"
+            />
+            <button
+              className="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-full text-white text-xs font-medium"
+              onClick={() => {
+                window.location.href = "http://localhost:8080/auth/logout";
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <a href="http://localhost:8080/auth/google">
+            <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+              Sign in with Google
+            </button>
+          </a>
+        )}
       </div>
     </header>
   );
