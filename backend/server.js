@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 export let fileNames = [];
 export let colorPalette = {}
-export let libraries;;
+export let libraries = [];
 
 
 app.use("/api/image", imageRoutes)

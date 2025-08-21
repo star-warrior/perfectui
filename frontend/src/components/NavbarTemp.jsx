@@ -3,21 +3,11 @@ import React, { useEffect } from "react";
 import { useUser } from "../context/UserContext";
 
 function NavbarTemp() {
-  const { user, setUser } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const userParam = params.get("user");
-    if (userParam) {
-      try {
-        setUser(JSON.parse(decodeURIComponent(userParam)));
-        window.history.replaceState(null, "", window.location.pathname);
-      } catch {
-        console.error("Failed to parse user data from URL", userParam);
-        setUser(null);
-      }
-    }
-  }, []);
+    console.log("NavbarTemp user:", user);
+  }, [user]);
 
   return (
     <nav className="flex justify-between items-center px-6 py-3 border-b border-[var(--border-color)] ">
@@ -34,7 +24,7 @@ function NavbarTemp() {
         {user ? (
           <div className="flex items-center gap-2">
             <img
-              src={user.photos?.[0]?.value}
+              src={user.avatar}
               alt="Profile"
               className="w-8 h-8 rounded-full border-2 border-blue-500"
             />

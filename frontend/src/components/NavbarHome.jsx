@@ -4,7 +4,7 @@ import { useUser } from "../context/UserContext";
 
 export default function NavbarHome() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { user, setUser } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,22 +12,6 @@ export default function NavbarHome() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Check for user in URL (after Google OAuth)
-    const params = new URLSearchParams(window.location.search);
-    const userParam = params.get("user");
-    if (userParam) {
-      try {
-        setUser(JSON.parse(decodeURIComponent(userParam)));
-        // Optionally remove user param from URL
-        window.history.replaceState(null, "", window.location.pathname);
-      } catch {
-        console.error("Failed to parse user data from URL", userParam);
-        setUser(null);
-      }
-    }
   }, []);
 
   return (
@@ -60,7 +44,7 @@ export default function NavbarHome() {
         {user ? (
           <div className="flex items-center space-x-2">
             <img
-              src={user.photos?.[0]?.value}
+              src={user.avatar}
               alt="Profile"
               className="w-8 h-8 rounded-full border-2 border-blue-500"
             />

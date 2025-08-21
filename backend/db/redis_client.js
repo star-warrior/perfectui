@@ -1,13 +1,13 @@
 import redis from "redis"
 
-const client = redis.createClient({ legacyMode: true })
+const client = redis.createClient()
 
 client.on('connect', () => {
     console.log("Connected to Redis");
 })
 
 client.on('error', (e) => {
-    console.error("Error occured in Redis: ", error);
+    console.error("Error occured in Redis: ", e);
 })
 
 client.connect();
