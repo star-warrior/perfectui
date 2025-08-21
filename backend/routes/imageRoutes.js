@@ -3,6 +3,8 @@ import axios from "axios";
 import multer from "multer";
 import path from "path"
 
+import { fileNames } from "../server.js";
+
 const app = e();
 const Router = e.Router();
 
@@ -23,11 +25,15 @@ Router.post('/upload', (upload.array('images', 10)), (req, res) => {
         return res.status(400).json({ error: "No files uploaded" });
     }
 
+    fileNames.length = 0
+    fileNames.push(req.files.map(f => f.filename))
+
     // console.log("Uploaded files:", req.files);
     res.status(200).json({
         message: "Files uploaded successfully",
         files: req.files.map(f => f.filename)
     });
+
 })
 
 
