@@ -16,7 +16,7 @@ export default function NavbarHome() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-6 bg-black transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-6 bg-black/20 transition-all duration-300 ${
         isScrolled ? "border-b border-[var(--border-color)]" : ""
       }`}
     >

@@ -1,6 +1,7 @@
 import React from "react";
 import { Check } from "lucide-react";
 import NavbarHome from "../components/NavbarHome";
+import Orb from "../UI/Orbs";
 
 export default function Homepage() {
   function navigateTemplate() {
@@ -8,12 +9,30 @@ export default function Homepage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <NavbarHome />
 
-      {/* Main Content */}
-      <main className="flex mt-5 flex-col items-center justify-center px-8 py-20 text-center">
-        <div className="max-w-4xl">
+      {/* Background container with lower z-index */}
+      <div
+        style={{
+          width: "100%",
+          height: "600px",
+          position: "relative",
+          zIndex: 0,
+          overflow: "hidden",
+        }}
+      >
+        <Orb
+          hoverIntensity={0.1}
+          rotateOnHover={true}
+          hue={30}
+          forceHoverState={false}
+        />
+      </div>
+
+      {/* Main Content with higher z-index */}
+      <main className="flex mt-5 flex-col items-center justify-center px-8 py-20 text-center bg-black/50 absolute w-[100%] h-[100vh] top-3 z-10">
+        <div className="max-w-4xl bg-transparent">
           <h1 className="text-[length:var(--text-6xl)] font-bold mb-8 leading-18">
             Design Your UI
             <br />
