@@ -1,10 +1,9 @@
 import React from "react";
-
 import { Copy, Download } from "lucide-react";
 import { Highlight, themes } from "prism-react-renderer";
-import "../public/css/template.css"; // Import your CSS file for styles
+import Preview from "./Preview";
 
-function RightPanel({ loading, setActiveTab, activeTab, md }) {
+function RightPanel({ loading, setActiveTab, activeTab, md, palette }) {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(md);
@@ -53,11 +52,9 @@ function RightPanel({ loading, setActiveTab, activeTab, md }) {
       </div>
 
       {/* Content Area */}
-      <div className="max-h-screen overflow-y-auto bg-black rounded-lg relative p-4 text-sm">
+      <div className="max-h-screen overflow-y-auto bg-black rounded-lg relative p-1 text-sm">
         {activeTab === "Preview" ? (
-          <div className="text-[var(--muted-text)]">
-            This is the Preview area.
-          </div>
+          <Preview palette={palette} />
         ) : loading ? (
           <div className="text-[var(--muted-text)]">Loading...</div>
         ) : (

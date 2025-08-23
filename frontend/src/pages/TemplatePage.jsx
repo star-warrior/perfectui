@@ -14,9 +14,12 @@ export default function TemplatePage() {
   const [loading, setLoading] = useState(false); // State to manage loading status
 
   const [palette, setPalette] = useState({
-    primary: "#000000",
-    secondary: "#000000",
-    accent: "#000000",
+    "color-bg-primary": "#15202b", // Main background (darkest)
+    "color-bg-secondary": "#192734", // Secondary background
+    "color-bg-tertiary": "#22303c", // Tertiary background/cards
+    "color-text-secondary": "#8899ac", // Muted text
+    "color-white": "#ffffff", // Primary text/highlights
+    "color-accent": "#22303c", // Accent color
   });
 
   const [files, setFiles] = useState([]);
@@ -67,10 +70,10 @@ export default function TemplatePage() {
 
       // 2. Validate palette
       if (
-        !palette.primary ||
-        !palette.secondary ||
-        !palette.accent ||
-        palette.accent === "#000000"
+        !palette["color-bg-primary"] ||
+        !palette["color-bg-secondary"] ||
+        !palette["color-white"] ||
+        palette["color-white"] === "#000000"
       ) {
         console.log("Palette is incomplete, please select all colors.");
       } else {
@@ -154,6 +157,7 @@ export default function TemplatePage() {
           setActiveTab={setActiveTab}
           activeTab={activeTab}
           md={md}
+          palette={palette}
         />
       </div>
     </div>

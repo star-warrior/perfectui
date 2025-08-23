@@ -1,0 +1,15 @@
+:root {
+  /* Default fallback colors - these will be overridden by dynamic palette */
+  --color-bg-primary: #15202b;
+  --color-bg-secondary: #192734;
+  --color-bg-tertiary: #22303c;
+  --color-text-secondary: #8899ac;
+  --color-white: #ffffff;
+  --color-accent: #22303c;
+}
+
+/* Smooth transitions for color changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
