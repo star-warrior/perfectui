@@ -19,7 +19,7 @@ export default function TemplatePage() {
     "color-bg-tertiary": "#22303c", // Tertiary background/cards
     "color-text-secondary": "#8899ac", // Muted text
     "color-white": "#ffffff", // Primary text/highlights
-    "color-accent": "#22303c", // Accent color
+    "color-accent": "#1c9cf0", // Accent color
   });
 
   const [files, setFiles] = useState([]);
@@ -109,6 +109,7 @@ export default function TemplatePage() {
         console.log("Calling GenAI API...");
 
         setLoading(true); // Set loading to true before making the API call
+        setActiveTab("JSON"); // Switch to JSON tab when loading starts
         const jsonProfile = await axios.get("/api/genAI", {
           withCredentials: true,
         });

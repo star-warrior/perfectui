@@ -27,7 +27,7 @@ import {
   Cell,
 } from "recharts";
 
-import "./Preview.css";
+import "../public/css/Preview.css";
 
 const Preview = ({ palette }) => {
   const [activeNav, setActiveNav] = useState("home");
@@ -82,13 +82,13 @@ const Preview = ({ palette }) => {
     "--color-bg-tertiary": palette?.["color-bg-tertiary"] || "#22303c",
     "--color-text-secondary": palette?.["color-text-secondary"] || "#8899ac",
     "--color-white": palette?.["color-white"] || "#ffffff",
-    "--color-accent": palette?.["color-accent"] || "#22303c",
+    "--color-accent": palette?.["color-accent"] || "#1c9cf0",
   };
 
   return (
     <div
       style={rootStyles}
-      className="min-h-screen bg-[var(--color-bg-primary)] flex"
+      className="h-full bg-[var(--color-bg-primary)] flex"
     >
       {/* Sidebar */}
       <div className="w-16 bg-[var(--color-bg-secondary)] flex flex-col items-center py-6">

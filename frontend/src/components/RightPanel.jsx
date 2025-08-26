@@ -2,6 +2,7 @@ import React from "react";
 import { Copy, Download } from "lucide-react";
 import { Highlight, themes } from "prism-react-renderer";
 import Preview from "./Preview";
+import "../public/css/RightPanel.css";
 
 function RightPanel({ loading, setActiveTab, activeTab, md, palette }) {
   const handleCopy = async () => {
@@ -56,7 +57,7 @@ function RightPanel({ loading, setActiveTab, activeTab, md, palette }) {
         {activeTab === "Preview" ? (
           <Preview palette={palette} />
         ) : loading ? (
-          <div className="text-[var(--muted-text)]">Loading...</div>
+          <div className="loader w-full text-center "></div>
         ) : (
           <>
             <Highlight theme={themes.synthwave84} code={md} language="json">
