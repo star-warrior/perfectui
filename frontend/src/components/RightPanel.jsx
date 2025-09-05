@@ -53,7 +53,7 @@ function RightPanel({ loading, setActiveTab, activeTab, md, palette }) {
       </div>
 
       {/* Content Area */}
-      <div className="max-h-screen overflow-y-auto bg-black rounded-lg relative p-1 text-sm">
+      <div className="max-h-full overflow-y-auto bg-black rounded-lg relative p-1 text-sm">
         {activeTab === "Preview" ? (
           <Preview palette={palette} />
         ) : loading ? (

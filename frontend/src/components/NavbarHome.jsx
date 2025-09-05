@@ -20,36 +20,55 @@ export default function NavbarHome() {
         isScrolled ? "border-b border-[var(--border-color)]" : ""
       }`}
     >
-      <div className="text-[length:var(--text-base)] font-semibold italic">
+      <div className="text-[length:var(--text-base)] font-semibold italic font-heading tracking-tight">
         Perfectto UI
       </div>
 
-      <nav className="hidden md:flex space-x-8 text-gray-400">
-        <a href="#" className="hover:text-white transition-colors">
-          Perfectto UI
+      <nav className="hidden md:flex space-x-8 text-gray-400 font-body">
+        <a
+          href="#how-to-use"
+          className="hover:text-white transition-colors font-medium tracking-wide"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById("how-to-use")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          How to Use
         </a>
-        <a href="#" className="hover:text-white transition-colors">
-          Perfectto UI
-        </a>
-        <a href="#" className="hover:text-white transition-colors">
+        <a
+          href="https://github.com/star-warrior/perfectui"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-white transition-colors font-medium tracking-wide"
+        >
           Contribute
         </a>
       </nav>
 
       <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-2 bg-white text-black px-3 py-1.5 rounded-full text-sm">
-          <Github size={16} />
-          <span>6.6K</span>
-        </div>
+        <a
+          href="https://github.com/star-warrior/perfectui"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-2 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white px-4 py-2 rounded-full text-sm font-body font-medium transition-all duration-300 border border-gray-600 hover:border-gray-400 shadow-lg hover:shadow-xl transform hover:scale-105"
+        >
+          <Github size={16} className="text-white" />
+          <span>Star on Github</span>
+          <div className="bg-white text-black px-2 py-0.5 rounded-full text-xs font-bold">
+            6.6K
+          </div>
+        </a>
         {user ? (
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <img
               src={user.avatar}
               alt="Profile"
-              className="w-8 h-8 rounded-full border-2 border-blue-500"
+              className="w-9 h-9 rounded-full border-2 border-blue-500 shadow-lg hover:border-blue-400 transition-colors"
             />
             <button
-              className="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-full text-white text-xs font-medium"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-4 py-2 rounded-full text-white text-sm font-medium font-body transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               onClick={() => {
                 window.location.href = "http://localhost:8080/auth/logout";
               }}
@@ -58,11 +77,16 @@ export default function NavbarHome() {
             </button>
           </div>
         ) : (
-          <a href="http://localhost:8080/auth/google">
-            <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">
-              Sign in with Google
-            </button>
-          </a>
+          <button
+            onClick={() =>
+              (window.location.href = "http://localhost:8080/auth/google")
+            }
+            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-4 py-2 rounded-full text-white font- text-sm transition-all duration-300 font-body tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 border border-blue-500/50 hover:border-blue-400/70"
+          >
+            <span className="flex items-center space-x-2">
+              <span>Sign In</span>
+            </span>
+          </button>
         )}
       </div>
     </header>

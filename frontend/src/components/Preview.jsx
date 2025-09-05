@@ -88,7 +88,7 @@ const Preview = ({ palette }) => {
   return (
     <div
       style={rootStyles}
-      className="h-full bg-[var(--color-bg-primary)] flex"
+      className="min-h-full bg-[var(--color-bg-primary)] flex"
     >
       {/* Sidebar */}
       <div className="w-16 bg-[var(--color-bg-secondary)] flex flex-col items-center py-6">
