@@ -24,7 +24,7 @@ const app = e();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["perfect-ui.netlify.app", "http://localhost:5173"],
     credentials: true,
     allowedHeaders: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
