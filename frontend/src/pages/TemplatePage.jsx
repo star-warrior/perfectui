@@ -18,7 +18,7 @@ export default function TemplatePage() {
     "color-bg-secondary": "#192734", // Secondary background
     "color-bg-tertiary": "#22303c", // Tertiary background/cards
     "color-text-secondary": "#8899ac", // Muted text
-    "color-white": "#ffffff", // Primary text/highlights
+    "color-text-primary": "#ffffff", // Primary text/highlights
     "color-accent": "#1c9cf0", // Accent color
   });
 
@@ -72,8 +72,8 @@ export default function TemplatePage() {
       if (
         !palette["color-bg-primary"] ||
         !palette["color-bg-secondary"] ||
-        !palette["color-white"] ||
-        palette["color-white"] === "#000000"
+        !palette["color-text-primary"] ||
+        palette["color-text-primary"] === "#000000"
       ) {
         console.log("Palette is incomplete, please select all colors.");
       } else {

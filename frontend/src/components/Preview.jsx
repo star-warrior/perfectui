@@ -56,15 +56,15 @@ const Preview = ({ palette }) => {
   }));
 
   const pieData = [
-    { name: "Vacant", value: 63, color: "var(--color-white)" },
+    { name: "Vacant", value: 63, color: "var(--color-text-primary)" },
     { name: "Occupied", value: 42, color: "var(--color-text-secondary)" },
     { name: "Unlisted", value: 45, color: "var(--color-accent)" },
   ];
 
   const barData = [
-    { name: "Texas", value: 1400, color: "var(--color-white)" },
-    { name: "California", value: 1800, color: "var(--color-white)" },
-    { name: "New York", value: 1200, color: "var(--color-white)" },
+    { name: "Texas", value: 1400, color: "var(--color-text-primary)" },
+    { name: "California", value: 1800, color: "var(--color-text-primary)" },
+    { name: "New York", value: 1200, color: "var(--color-text-primary)" },
   ];
 
   const navItems = [
@@ -76,25 +76,41 @@ const Preview = ({ palette }) => {
   ];
 
   // CSS styles as a style object to inject root variables from dynamic palette
+  const defaultPalette = {
+    "color-bg-primary": "#15202b",
+    "color-bg-secondary": "#192734",
+    "color-bg-tertiary": "#22303c",
+    "color-text-secondary": "#8899ac",
+    "color-text-primary": "#ffffff",
+    "color-accent": "#1c9cf0",
+  };
+
   const rootStyles = {
-    "--color-bg-primary": palette?.["color-bg-primary"] || "#15202b",
-    "--color-bg-secondary": palette?.["color-bg-secondary"] || "#192734",
-    "--color-bg-tertiary": palette?.["color-bg-tertiary"] || "#22303c",
-    "--color-text-secondary": palette?.["color-text-secondary"] || "#8899ac",
-    "--color-white": palette?.["color-white"] || "#ffffff",
-    "--color-accent": palette?.["color-accent"] || "#1c9cf0",
+    "--color-bg-primary":
+      palette?.["color-bg-primary"] || defaultPalette["color-bg-primary"],
+    "--color-bg-secondary":
+      palette?.["color-bg-secondary"] || defaultPalette["color-bg-secondary"],
+    "--color-bg-tertiary":
+      palette?.["color-bg-tertiary"] || defaultPalette["color-bg-tertiary"],
+    "--color-text-secondary":
+      palette?.["color-text-secondary"] ||
+      defaultPalette["color-text-secondary"],
+    "--color-text-primary":
+      palette?.["color-text-primary"] || defaultPalette["color-text-primary"],
+    "--color-accent":
+      palette?.["color-accent"] || defaultPalette["color-accent"],
   };
 
   return (
     <div
       style={rootStyles}
-      className="min-h-full bg-[var(--color-bg-primary)] flex"
+      className="max-h-fit bg-[var(--color-bg-primary)] flex"
     >
       {/* Sidebar */}
       <div className="w-16 bg-[var(--color-bg-secondary)] flex flex-col items-center py-6">
         {/* Logo */}
         <div className="w-12 h-12 bg-[var(--color-bg-primary)] rounded-xl flex items-center justify-center mb-8">
-          <div className="w-6 h-6 bg-[var(--color-white)] rounded-sm"></div>
+          <div className="w-6 h-6 bg-[var(--color-text-primary)] rounded-sm"></div>
         </div>
 
         {/* Navigation */}
@@ -105,8 +121,8 @@ const Preview = ({ palette }) => {
               onClick={() => setActiveNav(key)}
               className={`p-3 rounded-lg transition-colors ${
                 activeNav === key
-                  ? "bg-[var(--color-white)] text-[var(--color-bg-secondary)]"
-                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-white)] hover:bg-[var(--color-bg-tertiary)]"
+                  ? "bg-[var(--color-text-primary)] text-[var(--color-bg-secondary)]"
+                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)]"
               }`}
             >
               <Icon size={20} />
@@ -121,7 +137,7 @@ const Preview = ({ palette }) => {
         <div className="flex-1 p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-2xl font-bold text-[var(--color-white)]">
+            <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Dashboard
             </h1>
             <div className="flex items-center space-x-4">
@@ -133,21 +149,21 @@ const Preview = ({ palette }) => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="pl-10 pr-4 py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-bg-tertiary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-white)] focus:border-transparent text-[var(--color-white)] placeholder-[var(--color-text-secondary)]"
+                  className="pl-10 pr-4 py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-bg-tertiary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-text-primary)] focus:border-transparent text-[var(--color-text-primary)] placeholder-[var(--color-text-secondary)]"
                 />
               </div>
-              <button className="p-2 border border-[var(--color-bg-tertiary)] rounded-lg hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] hover:text-[var(--color-white)]">
+              <button className="p-2 border border-[var(--color-bg-tertiary)] rounded-lg hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]">
                 <Filter size={16} />
               </button>
-              <button className="p-2 border border-[var(--color-bg-tertiary)] rounded-lg hover:bg-[var(--color-bg-secondary)] relative text-[var(--color-text-secondary)] hover:text-[var(--color-white)]">
+              <button className="p-2 border border-[var(--color-bg-tertiary)] rounded-lg hover:bg-[var(--color-bg-secondary)] relative text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]">
                 <Bell size={16} />
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-[var(--color-white)] rounded-full"></span>
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-[var(--color-text-primary)] rounded-full"></span>
               </button>
             </div>
           </div>
 
           {/* Welcome Section */}
-          <div className="bg-gradient-to-r from-[var(--color-bg-tertiary)] to-[var(--color-bg-secondary)] rounded-2xl p-6 mb-6 text-[var(--color-white)] relative overflow-hidden border border-[var(--color-bg-tertiary)]">
+          <div className="bg-gradient-to-r from-[var(--color-bg-tertiary)] to-[var(--color-bg-secondary)] rounded-2xl p-6 mb-6 text-[var(--color-text-primary)] relative overflow-hidden border border-[var(--color-bg-tertiary)]">
             <div className="flex justify-between items-center">
               <div className="flex-1">
                 <h2 className="text-xl font-semibold mb-2">
@@ -176,7 +192,7 @@ const Preview = ({ palette }) => {
                         cx="50"
                         cy="50"
                         r="40"
-                        stroke="var(--color-white)"
+                        stroke="var(--color-text-primary)"
                         strokeWidth="8"
                         fill="none"
                         strokeDasharray={`${(63 / 150) * 251} 251`}
@@ -203,7 +219,7 @@ const Preview = ({ palette }) => {
                   </div>
                   <div className="text-sm space-y-1">
                     <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-[var(--color-white)] rounded-full"></div>
+                      <div className="w-3 h-3 bg-[var(--color-text-primary)] rounded-full"></div>
                       <span className="text-[var(--color-text-secondary)]">
                         63 Vacant
                       </span>
@@ -240,37 +256,56 @@ const Preview = ({ palette }) => {
             <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
               <div className="flex items-center justify-between mb-4">
                 <MessageSquare
-                  className="text-[var(--color-white)]"
+                  className="text-[var(--color-text-primary)]"
                   size={24}
                 />
-                <ChevronUp className="text-[var(--color-white)]" size={16} />
+                <ChevronUp
+                  className="text-[var(--color-text-primary)]"
+                  size={16}
+                />
               </div>
               <p className="text-sm text-[var(--color-text-secondary)] mb-1">
                 Inquiry Message
               </p>
-              <p className="text-3xl font-bold text-[var(--color-white)]">19</p>
+              <p className="text-3xl font-bold text-[var(--color-text-primary)]">
+                19
+              </p>
             </div>
 
             <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
               <div className="flex items-center justify-between mb-4">
-                <UserPlus className="text-[var(--color-white)]" size={24} />
-                <ChevronUp className="text-[var(--color-white)]" size={16} />
+                <UserPlus
+                  className="text-[var(--color-text-primary)]"
+                  size={24}
+                />
+                <ChevronUp
+                  className="text-[var(--color-text-primary)]"
+                  size={16}
+                />
               </div>
               <p className="text-sm text-[var(--color-text-secondary)] mb-1">
                 New Applicant
               </p>
-              <p className="text-3xl font-bold text-[var(--color-white)]">67</p>
+              <p className="text-3xl font-bold text-[var(--color-text-primary)]">
+                67
+              </p>
             </div>
 
             <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
               <div className="flex items-center justify-between mb-4">
-                <TrendingUp className="text-[var(--color-white)]" size={24} />
-                <ChevronUp className="text-[var(--color-white)]" size={16} />
+                <TrendingUp
+                  className="text-[var(--color-text-primary)]"
+                  size={24}
+                />
+                <ChevronUp
+                  className="text-[var(--color-text-primary)]"
+                  size={16}
+                />
               </div>
               <p className="text-sm text-[var(--color-text-secondary)] mb-1">
                 Property Sales
               </p>
-              <p className="text-3xl font-bold text-[var(--color-white)]">
+              <p className="text-3xl font-bold text-[var(--color-text-primary)]">
                 180
               </p>
             </div>
@@ -281,7 +316,7 @@ const Preview = ({ palette }) => {
             {/* Visitors Chart */}
             <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-[var(--color-white)]">
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
                   Average visitors
                 </h3>
                 <MoreHorizontal
@@ -312,17 +347,17 @@ const Preview = ({ palette }) => {
                     <Line
                       type="monotone"
                       dataKey="visitors"
-                      stroke="var(--color-white)"
+                      stroke="var(--color-text-primary)"
                       strokeWidth={3}
                       dot={false}
-                      fill="var(--color-white)"
+                      fill="var(--color-text-primary)"
                       fillOpacity={0.1}
                     />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
               <div className="flex space-x-2 mt-4">
-                <button className="px-3 py-1 bg-[var(--color-white)] text-[var(--color-bg-secondary)] text-sm rounded-md">
+                <button className="px-3 py-1 bg-[var(--color-text-primary)] text-[var(--color-bg-secondary)] text-sm rounded-md">
                   1 Day
                 </button>
                 <button className="px-3 py-1 bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] text-sm rounded-md">
@@ -343,7 +378,7 @@ const Preview = ({ palette }) => {
             {/* Price Comparison Chart */}
             <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-[var(--color-white)]">
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
                   Listed vs offer price for rejection
                 </h3>
                 <span className="text-sm text-[var(--color-text-secondary)]">
@@ -352,7 +387,7 @@ const Preview = ({ palette }) => {
               </div>
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-[var(--color-white)] rounded-full"></div>
+                  <div className="w-3 h-3 bg-[var(--color-text-primary)] rounded-full"></div>
                   <span className="text-sm text-[var(--color-text-secondary)]">
                     Offer price $76,000k
                   </span>
@@ -367,7 +402,7 @@ const Preview = ({ palette }) => {
               <div className="h-32">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={priceData.slice(0, 20)}>
-                    <Bar dataKey="offer" fill="var(--color-white)" />
+                    <Bar dataKey="offer" fill="var(--color-text-primary)" />
                     <Bar dataKey="listed" fill="var(--color-text-secondary)" />
                   </BarChart>
                 </ResponsiveContainer>
@@ -378,7 +413,7 @@ const Preview = ({ palette }) => {
           {/* Our Property Section */}
           <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-[var(--color-white)]">
+              <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
                 Our property
               </h3>
               <span className="text-sm text-[var(--color-text-secondary)]">
@@ -389,7 +424,7 @@ const Preview = ({ palette }) => {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="bg-[var(--color-bg-tertiary)] rounded-lg p-4 h-24 flex items-center justify-center text-[var(--color-white)] font-medium border border-[var(--color-bg-tertiary)]"
+                  className="bg-[var(--color-bg-tertiary)] rounded-lg p-4 h-24 flex items-center justify-center text-[var(--color-text-primary)] font-medium border border-[var(--color-bg-tertiary)]"
                 >
                   Property {i}
                 </div>
@@ -402,7 +437,7 @@ const Preview = ({ palette }) => {
         <div className="w-80 p-6 bg-[var(--color-bg-primary)]">
           <div className="bg-[var(--color-bg-secondary)] rounded-lg p-6 shadow-lg border border-[var(--color-bg-tertiary)]">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-[var(--color-white)]">
+              <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
                 Properties & Location
               </h3>
               <span className="text-sm text-[var(--color-text-secondary)]">
@@ -413,7 +448,7 @@ const Preview = ({ palette }) => {
             {/* Location Stats */}
             <div className="grid grid-cols-3 gap-4 mb-6">
               <div className="text-center">
-                <p className="text-2xl font-bold text-[var(--color-white)]">
+                <p className="text-2xl font-bold text-[var(--color-text-primary)]">
                   1400
                 </p>
                 <p className="text-xs text-[var(--color-text-secondary)]">
@@ -421,7 +456,7 @@ const Preview = ({ palette }) => {
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-[var(--color-white)]">
+                <p className="text-2xl font-bold text-[var(--color-text-primary)]">
                   1800+
                 </p>
                 <p className="text-xs text-[var(--color-text-secondary)]">
@@ -429,7 +464,7 @@ const Preview = ({ palette }) => {
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-[var(--color-white)]">
+                <p className="text-2xl font-bold text-[var(--color-text-primary)]">
                   1200
                 </p>
                 <p className="text-xs text-[var(--color-text-secondary)]">
@@ -457,7 +492,7 @@ const Preview = ({ palette }) => {
                   />
                   <Bar
                     dataKey="value"
-                    fill="var(--color-white)"
+                    fill="var(--color-text-primary)"
                     radius={[0, 4, 4, 0]}
                   />
                 </BarChart>
@@ -465,13 +500,13 @@ const Preview = ({ palette }) => {
             </div>
 
             <div className="flex justify-between text-sm mt-4">
-              <span className="text-[var(--color-white)] font-medium">
+              <span className="text-[var(--color-text-primary)] font-medium">
                 Texas
               </span>
-              <span className="text-[var(--color-white)] font-medium">
+              <span className="text-[var(--color-text-primary)] font-medium">
                 California
               </span>
-              <span className="text-[var(--color-white)] font-medium">
+              <span className="text-[var(--color-text-primary)] font-medium">
                 New York
               </span>
             </div>

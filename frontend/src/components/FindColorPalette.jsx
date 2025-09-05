@@ -8,17 +8,29 @@ function FindColorPalette({ palette, setPalette }) {
   const [imageFile, setImageFile] = useState(null);
   const [activePicker, setActivePicker] = useState(null);
   const [roleAssignments, setRoleAssignments] = useState({
-    "color-bg-primary": null, // Main background (darkest)
-    "color-bg-secondary": null, // Secondary background
-    "color-bg-tertiary": null, // Tertiary background/cards
-    "color-text-secondary": null, // Muted text
-    "color-white": null, // Primary text/highlights
-    "color-accent": null, // Accent color
+    "color-bg-primary": "#15202b", // Main background (darkest)
+    "color-bg-secondary": "#192734", // Secondary background
+    "color-bg-tertiary": "#22303c", // Tertiary background/cards
+    "color-text-secondary": "#8899ac", // Muted text
+    "color-text-primary": "#ffffff", // Primary text/highlights
+    "color-accent": "#1c9cf0", // Accent color
   });
   const [extractedColors, setExtractedColors] = useState([]);
   const fileInputRef = useRef(null);
   const imageRef = useRef(null);
   const pickerRefs = useRef({}); // store refs for each picker
+
+  // Ensure palette always has valid values
+  const safeGetColor = (role) => {
+    return palette?.[role] || roleAssignments[role] || "#000000";
+  };
+
+  // Initialize palette with default values if not provided
+  useEffect(() => {
+    if (!palette || Object.keys(palette).length === 0) {
+      setPalette(roleAssignments);
+    }
+  }, [palette, roleAssignments, setPalette]);
 
   const handleImageUpload = (event) => {
     const file = event.target.files && event.target.files[0];
@@ -81,7 +93,7 @@ function FindColorPalette({ palette, setPalette }) {
       "color-bg-tertiary": tertiaryBg?.hex || colors[2]?.hex || "#22303c",
       "color-text-secondary":
         mutedTextColor?.hex || colors[3]?.hex || "#8899ac",
-      "color-white": lightestColor?.hex || colors[4]?.hex || "#ffffff",
+      "color-text-primary": lightestColor?.hex || colors[4]?.hex || "#ffffff",
       "color-accent": mostSaturated?.hex || colors[5]?.hex || "#22303c",
     };
 
@@ -178,7 +190,7 @@ function FindColorPalette({ palette, setPalette }) {
                 {/* Swatch for current role */}
                 <div
                   className="w-5 h-5 rounded shadow cursor-pointer border border-gray-600"
-                  style={{ backgroundColor: palette[role] }}
+                  style={{ backgroundColor: safeGetColor(role) }}
                   onClick={() =>
                     setActivePicker((prev) => (prev === role ? null : role))
                   }
@@ -188,17 +200,17 @@ function FindColorPalette({ palette, setPalette }) {
                 {activePicker === role ? (
                   <div className="absolute left-16 z-10">
                     <HexColorPicker
-                      color={palette[role]}
+                      color={safeGetColor(role)}
                       onChange={(val) => handleRoleChange(role, val)}
                     />
                   </div>
                 ) : (
                   <span
                     className="font-mono text-sm text-gray-300 cursor-pointer"
-                    onClick={() => copyToClipboard(palette[role])}
+                    onClick={() => copyToClipboard(safeGetColor(role))}
                     title="Click to copy HEX"
                   >
-                    {palette[role]}
+                    {safeGetColor(role)}
                   </span>
                 )}
                 {/* Swatch selector for extracted colors */}
@@ -211,7 +223,7 @@ function FindColorPalette({ palette, setPalette }) {
                         style={{
                           backgroundColor: c.hex,
                           outline:
-                            palette[role] === c.hex
+                            safeGetColor(role) === c.hex
                               ? "2px solid #ffffff"
                               : "none",
                         }}
