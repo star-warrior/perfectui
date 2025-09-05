@@ -43,7 +43,7 @@ export default function Homepage() {
               The
               <br />
               <span className="italic font-extrabold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                Perfectto
+                PerfectUI
               </span>
               <br />
               Way

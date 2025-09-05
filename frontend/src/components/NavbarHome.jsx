@@ -17,11 +17,13 @@ export default function NavbarHome() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-6 transition-all duration-300 ${
-        isScrolled ? "bg-black/80 backdrop-blur-md border-b border-[var(--border-color)]" : "bg-black/20"
+        isScrolled
+          ? "bg-black/80 backdrop-blur-md border-b border-[var(--border-color)]"
+          : "bg-black/20"
       }`}
     >
       <div className="text-[length:var(--text-base)] font-semibold italic font-heading tracking-tight">
-        Perfectto UI
+        PerfectUI
       </div>
 
       <nav className="hidden md:flex space-x-8 text-gray-400 font-body">

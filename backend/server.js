@@ -133,3 +133,6 @@ app.listen(PORT, async (req, res) => {
     console.log("🌟 PerfectUI Server listening on port", PORT);
     await initializeServer();
 })
+
+
+export default app;
