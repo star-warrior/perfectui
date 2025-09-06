@@ -9,11 +9,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "perfectui-ekjs6a8y3-star-warriors-projects.vercel.app",
+        target: "https://perfectui.vercel.app/",
         changeOrigin: true,
         secure: false
       }, '/auth': {
-        target: "perfectui-ekjs6a8y3-star-warriors-projects.vercel.app",
+        target: "https://perfectui.vercel.app/",
         changeOrigin: true,
       }
     }

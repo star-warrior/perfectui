@@ -72,7 +72,8 @@ export default function NavbarHome() {
             <button
               className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-4 py-2 rounded-full text-white text-sm font-medium font-body transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               onClick={() => {
-                window.location.href = "http://localhost:8080/auth/logout";
+                window.location.href =
+                  "https://perfectui.vercel.app/auth/logout";
               }}
             >
               Sign Out
@@ -81,7 +82,8 @@ export default function NavbarHome() {
         ) : (
           <button
             onClick={() =>
-              (window.location.href = "http://localhost:8080/auth/google")
+              (window.location.href =
+                "https://perfectui.vercel.app//auth/google")
             }
             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-4 py-2 rounded-full text-white font- text-sm transition-all duration-300 font-body tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 border border-blue-500/50 hover:border-blue-400/70"
           >

@@ -26,9 +26,12 @@ export function UserProvider({ children }) {
         }
 
         // If no user in URL, check if user is already logged in via session
-        const response = await axios.get("http://localhost:8080/auth/profile", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://perfectui.vercel.app/auth/profile",
+          {
+            withCredentials: true,
+          }
+        );
 
         if (response.data && response.data.user) {
           setUser(response.data.user);
