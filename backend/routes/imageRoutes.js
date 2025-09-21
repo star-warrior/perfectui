@@ -10,7 +10,7 @@ const Router = e.Router();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // folder to save images
+        cb(null, '/tmp/uploads/'); // folder to save images
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);

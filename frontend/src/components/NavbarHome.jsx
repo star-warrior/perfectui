@@ -83,7 +83,7 @@ export default function NavbarHome() {
           <button
             onClick={() =>
               (window.location.href =
-                "https://perfectui.vercel.app//auth/google")
+                "https://perfectui.vercel.app/auth/google")
             }
             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-4 py-2 rounded-full text-white font- text-sm transition-all duration-300 font-body tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 border border-blue-500/50 hover:border-blue-400/70"
           >
